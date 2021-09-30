@@ -1,0 +1,20 @@
+.task_item {
+    display: block;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2%;
+}
+
+.task_item_holder {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+tr {
+    border: solid gray;
+    border-collapse: collapse;
+}
+
+html {
+    font-family: montserrat, sans-serif;
+}
