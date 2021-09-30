@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="added edit task, mark as undone">
-      <change afterPath="$PROJECT_DIR$/src/Components/TaskHolder.tsx" afterDir="false" />
+    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="got delete to work">
+      <change afterPath="$PROJECT_DIR$/src/Components/CreateTask.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/create.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/vite-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TaskHolder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TaskHolder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/task.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
         <option value="CSS File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -74,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633002722100</updated>
-      <workItem from="1633002723560" duration="15614000" />
+      <workItem from="1633002723560" duration="18124000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1633003115490</created>
@@ -125,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633040825163</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="got delete to work">
+      <created>1633041630574</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1633041630574</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +156,8 @@
     <MESSAGE value="added TaskItem" />
     <MESSAGE value="added right click, switched to react-icons" />
     <MESSAGE value="added edit task, mark as undone" />
-    <option name="LAST_COMMIT_MESSAGE" value="added edit task, mark as undone" />
+    <MESSAGE value="got delete to work" />
+    <option name="LAST_COMMIT_MESSAGE" value="got delete to work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

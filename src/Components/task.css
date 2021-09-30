@@ -27,6 +27,7 @@
 .task_item_holder {
     display: grid;
     grid-template-rows: auto;
+    font-size: 1rem;
 }
 
 @media (min-width: 720px) {
@@ -62,5 +63,4 @@ html {
 
 .fa-trash-alt {
     color: #CA0B00;
-
 }

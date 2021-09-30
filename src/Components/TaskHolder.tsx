@@ -5,6 +5,7 @@ import {BASE_PATH} from "../globals";
 import Task from "./Task";
 
 import "./task.css"
+import CreateTask from "./CreateTask";
 
 
 class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
@@ -47,6 +48,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     render() {
         return (
             <div className={"task_item_holder"}>
+                <CreateTask/>
                 {
                     this.state.tasks.sort(((a, b) => {
                         if (a.completed && !b.completed) {
