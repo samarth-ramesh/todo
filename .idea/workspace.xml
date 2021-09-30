@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="added TaskItem">
+    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="added edit task, mark as undone">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/task.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633002722100</updated>
-      <workItem from="1633002723560" duration="10330000" />
+      <workItem from="1633002723560" duration="14830000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1633003115490</created>
@@ -100,7 +96,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633033724560</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added right click, switched to react-icons">
+      <created>1633035770660</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633035770660</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added right click, switched to react-icons">
+      <created>1633035780121</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633035780121</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,7 +132,9 @@
     <MESSAGE value="basic display of tasks done" />
     <MESSAGE value="checking in for teh night" />
     <MESSAGE value="added TaskItem" />
-    <option name="LAST_COMMIT_MESSAGE" value="added TaskItem" />
+    <MESSAGE value="added right click, switched to react-icons" />
+    <MESSAGE value="added edit task, mark as undone" />
+    <option name="LAST_COMMIT_MESSAGE" value="added edit task, mark as undone" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

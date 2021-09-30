@@ -4,9 +4,11 @@ import {BASE_PATH} from "../globals";
 
 import "./task.css"
 import '@szhsin/react-menu/dist/index.css';
+import 'react-responsive-modal/styles.css';
 
 import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
 import {FiCheckCircle, FiCircle, FiEdit2, FiTrash} from "react-icons/fi";
+import Modal from "react-responsive-modal";
 
 interface TaskProps {
     task: TaskItem,
@@ -17,11 +19,30 @@ interface TaskProps {
 function Task(props: TaskProps) {
 
     const ocf = () => {
-        props.update({...props.task, completed: true})
+        props.update({...props.task, completed: !props.task.completed})
     }
 
     const {toggleMenu, ...menuProps} = useMenuState();
     const [anchorPoint, setAnchorPoint] = useState({x: 0, y: 0});
+
+    const [modalOpen, setModalOpen] = useState(false)
+    const [title, setTitle] = useState(props.task.title)
+
+    const editTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value)
+    }
+
+    const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === "Enter") {
+            toggleModal()
+        }
+    }
+
+    const toggleModal = () => {
+        toggleMenu(false)
+        setModalOpen(!modalOpen)
+        props.update({...props.task, title: title})
+    }
 
     return (
         <div className={"task_item"} onContextMenu={e => {
@@ -31,18 +52,23 @@ function Task(props: TaskProps) {
         }}>
             <div className={"task_left"}>
                 <div className={"task_icon_holder"} onClick={ocf}>
-                    { props.task.completed ? <FiCheckCircle/> : <FiCircle/>}
+                    {props.task.completed ? <FiCheckCircle/> : <FiCircle/>}
                 </div>
                 <div
-                    className={props.task.completed ? "task_item_completed" : undefined}>{props.task.title}
+                    className={props.task.completed ? "task_item_completed" : undefined}>{title}
                 </div>
             </div>
 
             <ControlledMenu {...menuProps} anchorPoint={anchorPoint}
                             onClose={() => toggleMenu(false)}>
-                <MenuItem><FiEdit2/> Edit </MenuItem>
+                <MenuItem onClick={toggleModal}><FiEdit2/> Edit </MenuItem>
                 <MenuItem><FiTrash/> Delete </MenuItem>
             </ControlledMenu>
+
+            <Modal open={modalOpen} onClose={toggleModal} center={true}>
+                <h1>Edit!</h1>
+                <input value={title} onChange={editTitle} onKeyDown={handleEnter}/>
+            </Modal>
         </div>
     );
 }
@@ -69,15 +95,12 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     }
 
     update(task: TaskItem) {
-        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(response => {
-            for (let i = 0; i < this.state.tasks.length; i++) {
-                if (this.state.tasks[i].id === task.id) {
-                    const newState = [...this.state.tasks];
-                    newState[i] = response.data
-                    this.setState({tasks: newState})
-                    break;
-                }
-            }
+        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(({data}) => {
+            this.setState((prevState) => ({
+                tasks: prevState.tasks.map(task => {
+                    return data.id === task.id ? data : task
+                })
+            }))
         }).catch(reason => {
             console.log(reason)
         })
@@ -95,8 +118,8 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
                         } else {
                             return 0
                         }
-                    })).map((value, index) => {
-                        return <Task key={index} task={value} update={this.update}/>
+                    })).map((value) => {
+                        return <Task key={value.id} task={value} update={this.update}/>
                     })
                 }
             </div>
