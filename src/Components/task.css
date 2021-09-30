@@ -1,19 +1,44 @@
 .task_item {
-    display: block;
+    display: flex;
+    flex-direction: row;
     border-width: 1px;
     border-style: solid;
-    padding: 2%;
+    padding: 1%;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 2;
+}
+
+.task_left {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    flex-grow: 2;
+}
+
+.task_icon_holder {
+    padding-right: 2%;
+}
+
+.task_item:hover {
+    background-color: ghostwhite;
 }
 
 .task_item_holder {
-    border: 1px solid gray;
-    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
 }
 
-tr {
-    border: solid gray;
-    border-collapse: collapse;
+.task_item_delete {
+    color: #CA0B00;
 }
+
+.task_item_completed {
+    color: gray;
+    text-decoration: line-through;
+}
+
 
 html {
     font-family: montserrat, sans-serif;

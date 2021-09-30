@@ -4,14 +4,38 @@ import {BASE_PATH} from "../globals";
 
 import "./task.css"
 
-class Task extends React.Component<{ task: TaskItem }, any> {
+interface TaskProps {
+    task: TaskItem,
+    markAsDone: (arg1: TaskItem) => void
+}
+
+
+class Task extends React.Component<TaskProps, any> {
+
+    constructor(props: TaskProps) {
+        super(props);
+        this.ocf = this.ocf.bind(this)
+    }
+
+    ocf() {
+        this.props.markAsDone({...this.props.task, completed:true})
+    }
+
     render() {
         return (
-            <tr className={"task_item"}>
-                <td>{this.props.task.completed ? <i className="far fa-check-circle"/> :
-                    <i className="far fa-circle"/>}</td>
-                <td>{this.props.task.title}</td>
-            </tr>
+            <div className={"task_item"}>
+                <div className={"task_left"}>
+                    <div className={"task_icon_holder"} onClick={this.ocf}>
+                        <i className={this.props.task.completed ? "far fa-check-circle" : "far fa-circle"}/>
+                    </div>
+                    <div
+                        className={this.props.task.completed ? "task_item_completed" : undefined}>{this.props.task.title}
+                    </div>
+                </div>
+                <div className={"task_item_delete"}>
+                    <i className="far fa-trash-alt"/>
+                </div>
+            </div>
         );
     }
 }
@@ -28,6 +52,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     constructor(props: any) {
         super(props);
         this.state = {tasks: []}
+        this.markAsDone = this.markAsDone.bind(this)
     }
 
     componentDidMount() {
@@ -36,10 +61,26 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
         })
     }
 
+    markAsDone(task: TaskItem) {
+        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, {...task, completed: true}).then(response => {
+            for (let i = 0; i < this.state.tasks.length; i++) {
+                if (this.state.tasks[i].id === task.id) {
+                    const newState = [...this.state.tasks];
+                    newState[i] = response.data
+                    this.setState({tasks: newState})
+                    break;
+                }
+            }
+        }).catch(reason => {
+            console.log(reason)
+        })
+    }
+
+
+
     render() {
         return (
-            <table className={"task_item_holder"}>
-                <tbody className={"task_item_holder"}>
+            <div className={"task_item_holder"}>
                 {
                     this.state.tasks.sort(((a, b) => {
                         if (a.completed && !b.completed) {
@@ -50,11 +91,10 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
                             return 0
                         }
                     })).map((value, index) => {
-                        return <Task key={index} task={value}/>
+                        return <Task key={index} task={value} markAsDone={this.markAsDone}/>
                     })
                 }
-                </tbody>
-            </table>
+            </div>
         )
     }
 }

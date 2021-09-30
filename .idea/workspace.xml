@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="basic display of tasks done">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Task.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/task.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/globals.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/vite-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/task.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633002722100</updated>
-      <workItem from="1633002723560" duration="3339000" />
+      <workItem from="1633002723560" duration="7335000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1633003115490</created>
@@ -87,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633003115490</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="basic display of tasks done">
+      <created>1633006094271</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633006094271</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
