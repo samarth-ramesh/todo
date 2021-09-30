@@ -1,43 +1,50 @@
-import React from "react";
+import React, {useState} from "react";
 import axios, {AxiosResponse} from "axios";
 import {BASE_PATH} from "../globals";
 
 import "./task.css"
+import '@szhsin/react-menu/dist/index.css';
+
+import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
+import {FiCheckCircle, FiCircle, FiEdit2, FiTrash} from "react-icons/fi";
 
 interface TaskProps {
     task: TaskItem,
-    markAsDone: (arg1: TaskItem) => void
+    update: (arg1: TaskItem) => void
 }
 
 
-class Task extends React.Component<TaskProps, any> {
+function Task(props: TaskProps) {
 
-    constructor(props: TaskProps) {
-        super(props);
-        this.ocf = this.ocf.bind(this)
+    const ocf = () => {
+        props.update({...props.task, completed: true})
     }
 
-    ocf() {
-        this.props.markAsDone({...this.props.task, completed:true})
-    }
+    const {toggleMenu, ...menuProps} = useMenuState();
+    const [anchorPoint, setAnchorPoint] = useState({x: 0, y: 0});
 
-    render() {
-        return (
-            <div className={"task_item"}>
-                <div className={"task_left"}>
-                    <div className={"task_icon_holder"} onClick={this.ocf}>
-                        <i className={this.props.task.completed ? "far fa-check-circle" : "far fa-circle"}/>
-                    </div>
-                    <div
-                        className={this.props.task.completed ? "task_item_completed" : undefined}>{this.props.task.title}
-                    </div>
+    return (
+        <div className={"task_item"} onContextMenu={e => {
+            e.preventDefault()
+            setAnchorPoint({x: e.clientX, y: e.clientY})
+            toggleMenu(true)
+        }}>
+            <div className={"task_left"}>
+                <div className={"task_icon_holder"} onClick={ocf}>
+                    { props.task.completed ? <FiCheckCircle/> : <FiCircle/>}
                 </div>
-                <div className={"task_item_delete"}>
-                    <i className="far fa-trash-alt"/>
+                <div
+                    className={props.task.completed ? "task_item_completed" : undefined}>{props.task.title}
                 </div>
             </div>
-        );
-    }
+
+            <ControlledMenu {...menuProps} anchorPoint={anchorPoint}
+                            onClose={() => toggleMenu(false)}>
+                <MenuItem><FiEdit2/> Edit </MenuItem>
+                <MenuItem><FiTrash/> Delete </MenuItem>
+            </ControlledMenu>
+        </div>
+    );
 }
 
 interface TaskItem {
@@ -52,7 +59,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     constructor(props: any) {
         super(props);
         this.state = {tasks: []}
-        this.markAsDone = this.markAsDone.bind(this)
+        this.update = this.update.bind(this)
     }
 
     componentDidMount() {
@@ -61,8 +68,8 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
         })
     }
 
-    markAsDone(task: TaskItem) {
-        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, {...task, completed: true}).then(response => {
+    update(task: TaskItem) {
+        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(response => {
             for (let i = 0; i < this.state.tasks.length; i++) {
                 if (this.state.tasks[i].id === task.id) {
                     const newState = [...this.state.tasks];
@@ -75,8 +82,6 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
             console.log(reason)
         })
     }
-
-
 
     render() {
         return (
@@ -91,7 +96,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
                             return 0
                         }
                     })).map((value, index) => {
-                        return <Task key={index} task={value} markAsDone={this.markAsDone}/>
+                        return <Task key={index} task={value} update={this.update}/>
                     })
                 }
             </div>

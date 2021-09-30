@@ -26,13 +26,29 @@
 
 .task_item_holder {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto;
 }
 
-.task_item_delete {
-    color: #CA0B00;
+@media (min-width: 720px) {
+    .task_item_holder {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
 }
+
+@media (max-width: 720px) {
+    .task_item_holder {
+        grid-template-columns: 1fr 8fr 1fr;
+    }
+
+    .task_icon_holder {
+        padding-right: 4vw;
+    }
+
+    .task_item {
+        padding: 2vh;
+    }
+}
+
 
 .task_item_completed {
     color: gray;
@@ -42,4 +58,9 @@
 
 html {
     font-family: montserrat, sans-serif;
+}
+
+.fa-trash-alt {
+    color: #CA0B00;
+
 }
