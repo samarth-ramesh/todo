@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Tasks from "./Components/Task";
+import Tasks from "./Components/TaskHolder";
 
 function App() {
   return (

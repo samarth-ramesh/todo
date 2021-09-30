@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import axios, {AxiosResponse} from "axios";
-import {BASE_PATH} from "../globals";
 
 import "./task.css"
 import '@szhsin/react-menu/dist/index.css';
@@ -9,10 +7,12 @@ import 'react-responsive-modal/styles.css';
 import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
 import {FiCheckCircle, FiCircle, FiEdit2, FiTrash} from "react-icons/fi";
 import Modal from "react-responsive-modal";
+import {TaskItem} from "../vite-env";
 
 interface TaskProps {
     task: TaskItem,
-    update: (arg1: TaskItem) => void
+    update: (arg1: TaskItem) => void,
+    delete: (arg1: TaskItem) => void
 }
 
 
@@ -20,6 +20,10 @@ function Task(props: TaskProps) {
 
     const ocf = () => {
         props.update({...props.task, completed: !props.task.completed})
+    }
+
+    const deleteItem = () => {
+        props.delete(props.task)
     }
 
     const {toggleMenu, ...menuProps} = useMenuState();
@@ -62,7 +66,7 @@ function Task(props: TaskProps) {
             <ControlledMenu {...menuProps} anchorPoint={anchorPoint}
                             onClose={() => toggleMenu(false)}>
                 <MenuItem onClick={toggleModal}><FiEdit2/> Edit </MenuItem>
-                <MenuItem><FiTrash/> Delete </MenuItem>
+                <MenuItem onClick={deleteItem}><FiTrash/> Delete </MenuItem>
             </ControlledMenu>
 
             <Modal open={modalOpen} onClose={toggleModal} center={true}>
@@ -73,58 +77,5 @@ function Task(props: TaskProps) {
     );
 }
 
-interface TaskItem {
-    userId: number,
-    id: number,
-    title: string,
-    completed: boolean
-}
 
-class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
-
-    constructor(props: any) {
-        super(props);
-        this.state = {tasks: []}
-        this.update = this.update.bind(this)
-    }
-
-    componentDidMount() {
-        axios.get<null, AxiosResponse<TaskItem[]>>(BASE_PATH + "todos/").then(value => {
-            this.setState({tasks: value.data})
-        })
-    }
-
-    update(task: TaskItem) {
-        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(({data}) => {
-            this.setState((prevState) => ({
-                tasks: prevState.tasks.map(task => {
-                    return data.id === task.id ? data : task
-                })
-            }))
-        }).catch(reason => {
-            console.log(reason)
-        })
-    }
-
-    render() {
-        return (
-            <div className={"task_item_holder"}>
-                {
-                    this.state.tasks.sort(((a, b) => {
-                        if (a.completed && !b.completed) {
-                            return 1
-                        } else if (!a.completed && b.completed) {
-                            return -1
-                        } else {
-                            return 0
-                        }
-                    })).map((value) => {
-                        return <Task key={value.id} task={value} update={this.update}/>
-                    })
-                }
-            </div>
-        )
-    }
-}
-
-export default Tasks
+export default Task
