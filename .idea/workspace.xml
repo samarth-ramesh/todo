@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="basic styling of create task done">
+    <list default="true" id="c79dcea1-5f53-425d-853d-4628a312ce14" name="Changes" comment="adde create">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CreateTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CreateTask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/TaskHolder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TaskHolder.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/create.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/create.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633002722100</updated>
-      <workItem from="1633002723560" duration="21611000" />
+      <workItem from="1633002723560" duration="21915000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1633003115490</created>
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633044181295</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="adde create">
+      <created>1633047760661</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1633047760661</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +171,8 @@
     <MESSAGE value="added edit task, mark as undone" />
     <MESSAGE value="got delete to work" />
     <MESSAGE value="basic styling of create task done" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic styling of create task done" />
+    <MESSAGE value="adde create" />
+    <option name="LAST_COMMIT_MESSAGE" value="adde create" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

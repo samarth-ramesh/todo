@@ -1,16 +1,9 @@
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Tasks from "./Components/TaskHolder";
 
 function App() {
-  return (
-      <>
-        <Router>
-            <Switch>
-                <Route exact={true} path={"/"}><Tasks/></Route>
-            </Switch>
-        </Router>
-      </>
-  )
+    return (
+        <Tasks/>
+    )
 }
 
 export default App
