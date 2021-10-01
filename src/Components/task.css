@@ -64,3 +64,26 @@ html {
 .fa-trash-alt {
     color: #CA0B00;
 }
+
+h1 {
+    grid-column: 2;
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    h1.title_mobile {
+        display: block;
+    }
+    h1.title_desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 720px) {
+    h1.title_mobile {
+        display: none;
+    }
+    h1.title_desktop {
+        display: block;
+    }
+}

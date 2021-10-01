@@ -23,7 +23,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
         this.read()
     }
 
-    create(title: string){
+    create(title: string) {
         axios.post<TaskItem>(BASE_PATH + "todos", {
             title: title,
             userId: 1,
@@ -34,11 +34,13 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
             }))
         })
     }
-    read(){
+
+    read() {
         axios.get<null, AxiosResponse<TaskItem[]>>(BASE_PATH + "todos/").then(value => {
             this.setState({tasks: value.data})
         })
     }
+
     update(task: TaskItem) {
         axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(({data}) => {
             this.setState((prevState) => ({
@@ -50,7 +52,8 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
             console.log(reason)
         })
     }
-    delete(task: TaskItem){
+
+    delete(task: TaskItem) {
         axios.delete(BASE_PATH + "todos/" + task.id).then(_ => { // we can ignore value ass it returns an empty obj
             this.setState((prevState) => ({
                 tasks: prevState.tasks.filter((newTask) => {
@@ -64,6 +67,8 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     render() {
         return (
             <div className={"task_item_holder"}>
+                <h1 className={"title_mobile"}>ToDo</h1>
+                <h1 className={"title_desktop"}>ToDo List</h1>
                 <CreateTask add={this.create}/>
                 {
                     this.state.tasks.sort(((a, b) => {
@@ -78,7 +83,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
                         return <Task key={value.id} task={value} update={this.update} delete={this.delete}/>
                     })
                 }
-                </div>
+            </div>
         )
     }
 }

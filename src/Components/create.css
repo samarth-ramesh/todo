@@ -1,6 +1,5 @@
 .create_holder {
     grid-column: 2;
-    grid-row: 1;
     position: sticky;
     top: 0;
     background-color: white;
