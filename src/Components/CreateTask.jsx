@@ -2,15 +2,15 @@ import "./create.css"
 import {FiCircle, FiPlusCircle} from "react-icons/fi";
 import React, {useState} from "react";
 
-function CreateTask(props: {add: (title: string) => void}) {
+function CreateTask(props) {
     const [text, setText] = useState("")
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (e) => {
         setText(e.target.value)
     }
 
     const [focussed, setFocussed] = useState(false)
-    const toggleFocus = (_: React.FocusEvent<HTMLInputElement>) => {
+    const toggleFocus = (_) => {
         setFocussed((prevState => !prevState))
     }
 

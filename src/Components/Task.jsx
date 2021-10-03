@@ -7,16 +7,10 @@ import 'react-responsive-modal/styles.css';
 import {ControlledMenu, MenuItem, useMenuState} from "@szhsin/react-menu";
 import {FiCheckCircle, FiCircle, FiEdit2, FiTrash} from "react-icons/fi";
 import Modal from "react-responsive-modal";
-import {TaskItem} from "../vite-env";
-
-interface TaskProps {
-    task: TaskItem,
-    update: (arg1: TaskItem) => void,
-    delete: (arg1: TaskItem) => void
-}
 
 
-function Task(props: TaskProps) {
+
+function Task(props) {
 
     const ocf = () => {
         props.update({...props.task, completed: !props.task.completed})
@@ -32,11 +26,11 @@ function Task(props: TaskProps) {
     const [modalOpen, setModalOpen] = useState(false)
     const [title, setTitle] = useState(props.task.title)
 
-    const editTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const editTitle = (e) => {
         setTitle(e.target.value)
     }
 
-    const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleEnter = (e) => {
         if (e.code === "Enter") {
             toggleModal()
         }

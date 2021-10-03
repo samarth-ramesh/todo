@@ -1,6 +1,5 @@
 import React from "react";
-import {TaskItem} from "../vite-env";
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 import {BASE_PATH} from "../globals";
 import Task from "./Task";
 
@@ -8,9 +7,9 @@ import "./task.css"
 import CreateTask from "./CreateTask";
 
 
-class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
+class Tasks extends React.Component {
 
-    constructor(props: any) {
+    constructor(props) {
         super(props);
         this.state = {tasks: []}
         this.create = this.create.bind(this)
@@ -23,8 +22,8 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
         this.read()
     }
 
-    create(title: string) {
-        axios.post<TaskItem>(BASE_PATH + "todos", {
+    create(title) {
+        axios.post(BASE_PATH + "todos", {
             title: title,
             userId: 1,
             completed: false
@@ -36,13 +35,13 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
     }
 
     read() {
-        axios.get<null, AxiosResponse<TaskItem[]>>(BASE_PATH + "todos/").then(value => {
+        axios.get(BASE_PATH + "todos/").then(value => {
             this.setState({tasks: value.data})
         })
     }
 
-    update(task: TaskItem) {
-        axios.put<TaskItem>(BASE_PATH + "todos/" + task.id, task).then(({data}) => {
+    update(task) {
+        axios.put(BASE_PATH + "todos/" + task.id, task).then(({data}) => {
             this.setState((prevState) => ({
                 tasks: prevState.tasks.map(task => {
                     return data.id === task.id ? data : task
@@ -53,7 +52,7 @@ class Tasks extends React.Component<any, { tasks: TaskItem[] }> {
         })
     }
 
-    delete(task: TaskItem) {
+    delete(task) {
         axios.delete(BASE_PATH + "todos/" + task.id).then(_ => { // we can ignore value ass it returns an empty obj
             this.setState((prevState) => ({
                 tasks: prevState.tasks.filter((newTask) => {
